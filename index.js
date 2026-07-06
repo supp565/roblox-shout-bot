@@ -23,18 +23,15 @@ async function startBot() {
         const currentUser = await noblox.getCurrentUser();
         console.log(`Logged in as: ${currentUser.UserName}`);
 
-        const groupId = 12013007; 
-        const shoutMessage = "HELL YAA"; 
-
         const generalToken = await noblox.getGeneralToken();
         console.log("Sending direct v2 endpoint request via proxy...");
         
-        // Exact API call format matching Roblox Groups v2 Schema
+        // Exact raw API call structure matching Roblox Groups v2 layout
         await axios({
             method: 'PATCH',
-            url: `https://roblox.com{groupId}/shout`,
+            url: 'https://roblox.com',
             data: {
-                message: shoutMessage
+                message: "HELL YAA"
             },
             proxy: {
                 protocol: 'http',
@@ -53,7 +50,7 @@ async function startBot() {
             }
         });
 
-        console.log(`Successfully shouted: "${shoutMessage}" via API v2`);
+        console.log(`Successfully shouted: "HELL YAA" via API v2`);
         
     } catch (error) {
         if (error.response) {
