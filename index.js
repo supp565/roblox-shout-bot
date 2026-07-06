@@ -34,7 +34,7 @@ async function startBot() {
         // Push direct patch request to Roblox groups v2 api endpoint
         await axios({
             method: 'PATCH',
-            url: `https://roblox.com${groupId}/shout`,
+            url: `https://roblox.com{groupId}/shout`,
             data: { message: shoutMessage },
             headers: {
                 'Cookie': `.ROBLOSECURITY=${cookie}`,
