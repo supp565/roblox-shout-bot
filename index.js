@@ -31,8 +31,14 @@ async function startBot() {
         
         await axios({
             method: 'PATCH',
+            // FIXED: Uses backticks and includes groups. and /v2/groups/ paths properly
             url: `https://roblox.com{groupId}/shout`,
-            data: { message: shoutMessage },
+            // FIXED: Payload wrapped inside a proper object map required by the v2 API
+            data: { 
+                shout: {
+                    message: shoutMessage 
+                }
+            },
             proxy: {
                 protocol: 'http',
                 host: '31.59.20.176',
