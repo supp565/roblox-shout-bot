@@ -1,18 +1,3 @@
-const express = require('express');
-const noblox = require('noblox.js');
-const axios = require('axios'); // Add axios for direct API requests
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.get('/', (req, res) => {
-    res.send('Roblox Shouting Bot is Live!');
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
-
 async function startBot() {
     try {
         console.log("Initializing session...");
@@ -26,20 +11,28 @@ async function startBot() {
         const groupId = 12013007; 
         const shoutMessage = "HELL YAA"; 
 
-        // Fetch the security CSRF token noblox generated for us
         const generalToken = await noblox.getGeneralToken();
-
-        console.log("Sending direct v2 endpoint request...");
+        console.log("Sending direct v2 endpoint request via proxy...");
         
-        // Push direct patch request to Roblox groups v2 api endpoint
+        // Push direct patch request to Roblox groups v2 api endpoint via proxy
         await axios({
             method: 'PATCH',
-            url: process.env.ROBLOX_API_URL,
+            url: `https://roblox.com{groupId}/shout`,
             data: { message: shoutMessage },
+            proxy: {
+                protocol: 'http',
+                host: '31.59.20.176',
+                port: 6754,
+                auth: {
+                    username: 'pmvewvju',
+                    password: 'a8x6w13xiar4'
+                }
+            },
             headers: {
                 'Cookie': `.ROBLOSECURITY=${cookie}`,
                 'X-CSRF-TOKEN': generalToken,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
             }
         });
 
@@ -53,5 +46,3 @@ async function startBot() {
         }
     }
 }
-
-startBot();
