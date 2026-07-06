@@ -16,12 +16,13 @@ app.listen(PORT, () => {
 
 async function startBot() {
     try {
-        console.log("Attempting to connect via Proxy...");
+        console.log("Setting up proxy and connecting...");
 
-        // Inject your working proxy directly into Axios via noblox options
-        noblox.setOptions({
-            proxy: "http://pmvewvju:a8x6w13xiar4@31.59.20.176:6754"
-        });
+        // Inject the proxy directly into Node's global network controller
+        // This bypasses the strict noblox.setOptions config error
+        const proxyUrl = "http://31.59.20";
+        process.env.HTTP_PROXY = proxyUrl;
+        process.env.HTTPS_PROXY = proxyUrl;
         
         // Log in securely using Render's environment variables
         const currentUser = await noblox.setCookie(process.env.ROBLOX_COOKIE);
