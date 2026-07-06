@@ -1,5 +1,6 @@
 const express = require('express');
 const noblox = require('noblox.js');
+const ROBLOX_COOKIE = '_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_CAEaBBAEGAEiGwoEZHVpZBITNzc4NjMxNzg4MTYxMDQ0ODAzNSgD.P9wuHcKP8QNrnXHyN92WuctoIDRmibYsGNcpJV3WaG8jN2S20FLf4zcAEp3dEodkxSss_mrAgODNjv9rrR9onaI0HG_0o6EKgjaIoMXkXuZ23S1-OcTt81lpHcAdhe6GUjTak-wiTsmiBQ2q00egZkyVJIL4IjBOlUpuYNSVIlSLPuvw3nJcrf6bOEKvh7MZArEKK3R7o4kGogDBLsbVo3bEfDdg7ZPGdqOqLa6m898n-QA7t079DxVNNajRIEMSu0qpS6yjRmsCNZW1ijjn1dTn2wv2MXUg6B_4YEo9MRBgz_ILWhK6oiylvMM8c4-BMkYvf8bZXVNAOI_WyAymxkKtoPWK0M-Jt39fmJ8S7opYw5SIq6EgQGqJ6Pq7f67wuWZ4O9oQo8sJBJmXc8NrUZBtrQuQI1E9NyDWnCpEVAMn-2umvv1AQ_OJM8CepW8rboaFTUij0x9-C5eiMNGvp-i776-vJokNUVscxi6L4NULkcnlQ8mlgtazrvbt5BiSoukAFXUVFPNOryQ33letQxAo980ptsCQl6Zz7FzclsigyX3WUcy5yEHSiisUW24Ms7LQxjZHYKMDzrIg9jZYzcjtK3j6WN8O3b6bv9uYgnRBJXE406do-d6UtmgxcOJ2z40yai7WptTvDuzW7v5ggQVZdtfrS2Q6MO21IZxi96vzSOBn6Bfb2vVzsCpYZLQXsY6y3vnT9K_R2xZLbNifYpmCEXL77Cd59hhQubjpcsDBggjFQ0i2EHG4cH0D6fsmb_3aGFmtv4qmCpn9GnrGM2hTbE2eueEl9aoDajAOdv9rFJRWTQH8n3a5lwyorordczpVEDkhat1hSgHeRiVK-5nQ3iYoK3Si_OwrLz_T1afw9AeVXiYrpDjItvje_KNButFLJ64ajYTQMW6_Tl4JXuL5aLS9-H_Q0Sfmv1phHkI.TumKx7ChG5eOC6ID8RqoX1mO2wE'
 const { HttpsProxyAgent } = require('https-proxy-agent'); // Import the proxy agent
 
 const app = express();
@@ -26,7 +27,7 @@ async function startBot() {
         console.log("Attempting to connect via Proxy...");
         
         // Log in using your cookie 
-        const currentUser = await noblox.setCookie(process.env.KEO6K6dIAEyimllirmlktlLrvK68JEcDA9W3gvfFJjr3y5KpZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNkluTnBaeTB5TURJeExUQTNMVEV6VkRFNE9qVXhPalE1V2lJc0luUjVjQ0k2SWtwWFZDSjkuZXlKaGRXUWlPaUpTYjJKc2IzaEpiblJsY201aGJDSXNJbWx6Y3lJNklrTnNiM1ZrUVhWMGFHVnVkR2xqWVhScGIyNVRaWEoyYVdObElpd2lZbUZ6WlVGd2FVdGxlU0k2SWt0RlR6WkxObVJKUVVWNWFXMXNiR2x5Yld4cmRHeE1jblpMTmpoS1JXTkVRVGxYTTJkMlprWkthbkl6ZVRWTGNDSXNJbTkzYm1WeVNXUWlPaUl4TVRJek5UZ3dNalkxTXlJc0ltVjRjQ0k2TVRjNE16STNNemt5TXl3aWFXRjBJam94Tnpnek1qY3dNekl6TENKdVltWWlPakUzT0RNeU56QXpNak45LmNPYkZ3Z1FZWDgteDY0WkR2Ui1zQmNnYjAwR19UUFlkd3pGck95Mlo0SF9lbG10SEppREtSeWJ2YmE3ejVsMGh0Q2lKVGQwbnVUWlcxVXd5NTRTQ0hzUE9rTW9YUDJwR2E5N0pvbUNOTjBIeHM1MDJOMS0zMldpN3R2aVp0NThDWFdrc005dkVXR1JybW1xZTJIM3lBeHVDVkdFX2d4YzNadk1PV3gtT0NCMG1zSzBWNnFjelk0VUx3NlpHcTVHdDJpU2FxMXFWVXRWeU1FanlQZ1RsQkxHenZPTGdOem9ueF9lbWo0UXJ0R3c2dXI2bnRiRmVCNGdVSW8wYzJCWnY0cmZMd1lCTFhpMXpkc1BzamJhRXUxRTZtTG5xRjZ4UWNzdU1XZzlFQnVMb0ZXd3RoMDA1X3pUaU5MSmx2dFBLOUt2ZmJScjJTbWRmUFN6eC1xOGhPQQ==);
+        const currentUser = await noblox.setCookie(process.env.ROBLOX_COOKIE);
         console.log(`Successfully logged in as ${currentUser.UserName}`);
 
         const groupId = process.env.12013007; 
