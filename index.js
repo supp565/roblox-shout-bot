@@ -25,10 +25,10 @@ async function startBot() {
         process.env.HTTPS_PROXY = proxyUrl;
         
         // Log in securely using Render's environment variables
-        const currentUser = await noblox.setCookie(process.env.ROBLOX_COOKIE);
+        const currentUser = await noblox.setCookie(ROBLOX_COOKIE);
         console.log(`Successfully logged in as ${currentUser.UserName}`);
 
-        const groupId = process.env.GROUP_ID; 
+        const groupId = GROUP_ID; 
         const shoutMessage = "HELL YAA"; 
 
         // Execute the shout
