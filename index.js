@@ -29,15 +29,12 @@ async function startBot() {
         const generalToken = await noblox.getGeneralToken();
         console.log("Sending direct v2 endpoint request via proxy...");
         
+        // Exact API call format matching Roblox Groups v2 Schema
         await axios({
             method: 'PATCH',
-            // FIXED: Uses backticks and includes groups. and /v2/groups/ paths properly
             url: `https://roblox.com{groupId}/shout`,
-            // FIXED: Payload wrapped inside a proper object map required by the v2 API
-            data: { 
-                shout: {
-                    message: shoutMessage 
-                }
+            data: {
+                message: shoutMessage
             },
             proxy: {
                 protocol: 'http',
@@ -52,7 +49,7 @@ async function startBot() {
                 'Cookie': `.ROBLOSECURITY=${cookie}`,
                 'X-CSRF-TOKEN': generalToken,
                 'Content-Type': 'application/json',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
             }
         });
 
@@ -60,7 +57,7 @@ async function startBot() {
         
     } catch (error) {
         if (error.response) {
-            console.error("Roblox API rejected it:", error.response.data);
+            console.error("Roblox API rejected it:", JSON.stringify(error.response.data));
         } else {
             console.error("Bot failed to execute:", error.message);
         }
