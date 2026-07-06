@@ -1,3 +1,18 @@
+const express = require('express');
+const noblox = require('noblox.js');
+const axios = require('axios');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+    res.send('Roblox Shouting Bot is Live!');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
 async function startBot() {
     try {
         console.log("Initializing session...");
@@ -14,7 +29,6 @@ async function startBot() {
         const generalToken = await noblox.getGeneralToken();
         console.log("Sending direct v2 endpoint request via proxy...");
         
-        // Push direct patch request to Roblox groups v2 api endpoint via proxy
         await axios({
             method: 'PATCH',
             url: `https://roblox.com{groupId}/shout`,
@@ -46,3 +60,5 @@ async function startBot() {
         }
     }
 }
+
+startBot();
